@@ -48,9 +48,9 @@ Add the following JSON configuration to the file corresponding to your tool:
 ## Configuration File Location by Tool
 The common JSON configuration should be placed in the following file, depending on the tool you are using:
 
-- Claude Desktop: claude_desktop_config.json
-- Cursor: .cursor/mcp.json
-- CodeGPT: ~/.codegpt/mcp_config.json
+- **Claude Desktop**: `claude_desktop_config.json`
+- **Cursor**: `.cursor/mcp.jso`
+- **CodeGPT**: `~/.codegpt/mcp_config.json`
 
 # Tool list
 - **asset_provider**: Get the list of asset providers.
