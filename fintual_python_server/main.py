@@ -60,5 +60,5 @@ def banks() -> str:
 
 # Prompts
 @mcp.prompt()
-def review_code(assets_provider: str) -> str:
+def assets_provider_prompt(assets_provider: str) -> str:
     return f"{assets_provider} es administradora de activos de Fintual?"
