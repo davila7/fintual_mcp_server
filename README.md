@@ -1,15 +1,14 @@
 # Fintual MCP Servers
-This repository contains the source code for the Fintual MCP
+A Model Context Protocol server that provides read-only access to Fintual's API. This server enables LLMs to interact with Fintual's API.
 
 # API Endpoints
-This MCP Server allows you to interact with Fintual's API:
 Swagger: https://fintual.cl/api-docs/index.html
 
 # Servers list
 - [Python Server](https://github.com/davila7/fintual_mcp_server/tree/main/python_server)
 - [Typescript Server]() (coming soon)
 
-# Setup instructions
+# Python Server Setup instructions
 1- Clone this repository
 ```bash
 git clone https://github.com/davila7/fintual_mcp_server.git
@@ -56,9 +55,9 @@ To use this with Claude Desktop, add the following to your claude_desktop_config
 `Zurich es una administradora de activos de Fintual ?`
 
 2. Question Example:
-`Cuales son los bancos que tiene Fintual ?`
+`Cuales son los bancos integrados en Fintual ?`
 
-3. Question Example:
+1. Question Example:
 `Cuales son los activos conceptuales de BANCHILE?`
 
 ## Add a Prompt to use the tools from the MCP Server
