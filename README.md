@@ -43,7 +43,7 @@ To use this with Claude Desktop, add the following to your claude_desktop_config
 ```
 
 # Tool list
-- **asset_provider**: Get the asset provider of a given asset.
+- **asset_provider**: Get the list of asset providers.
 - **get_asset_provider_by_id**: Get the asset provider by id.
 - **get_conceptual_assets**: Get the list of conceptual assets.
 - **banks**: Get the list of banks.
