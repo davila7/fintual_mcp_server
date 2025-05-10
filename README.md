@@ -5,20 +5,25 @@ This repository contains the source code for the Fintual MCP
 This MCP Server allows you to interact with Fintual's API:
 Swagger: https://fintual.cl/api-docs/index.html
 
-
 # Servers list
 - [Python Server](https://github.com/davila7/fintual_mcp_server/tree/main/python_server)
 - [Typescript Server]() (coming soon)
 
-# Tool list
+# Setup instructions
+1- Clone this repository
+```bash
+git clone https://github.com/davila7/fintual_mcp_server.git
+```
 
-## Example questions to use the tools
-`Zurich es una administradora de activos de Fintual ?`
+2- Install dependencies
+Install uv
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
 
-- The model will use the tools to answer the questions, but first it will ask for confirmation to use the tools.
-- Then the model will read the API response and answer the question.
-
-# UV Python MCP Server
+## Use with Claude Desktop
+To use this with Claude Desktop, add the following to your claude_desktop_config.json:
+### UV
 ```json
 {
   "mcpServers": {
@@ -30,8 +35,19 @@ Swagger: https://fintual.cl/api-docs/index.html
         "mcp[cli]",
         "mcp",
         "run",
-        "/path/to/projects/fintual_mcp_server/python_server/main.py"
+        "<path to mcp-servers>/fintual_mcp_server/python_server/main.py"
       ]
     }
   }
 }
+```
+
+# Tool list
+- **asset_provider**: Get the asset provider of a given asset.
+- **banks**: Get the list of banks.
+
+## Example questions to use the tools
+`Zurich es una administradora de activos de Fintual ?`
+
+- The model will use the tools to answer the questions, but first it will ask for confirmation to use the tools.
+- Then the model will read the API response and answer the question.
