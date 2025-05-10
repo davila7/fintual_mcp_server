@@ -5,7 +5,7 @@ A Model Context Protocol server that provides read-only access to Fintual's API.
 Swagger: https://fintual.cl/api-docs/index.html
 
 # Servers list
-- [Python Server](https://github.com/davila7/fintual_mcp_server/tree/main/python_server)
+- [Python Server](https://github.com/davila7/fintual_mcp_server/tree/main/fintual_python_server)
 - [Typescript Server]() (coming soon)
 
 # Python Server Setup instructions
