@@ -19,8 +19,9 @@ git clone https://github.com/davila7/fintual_mcp_server.git
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-## Use with Claude Desktop
-To use this with Claude Desktop, add the following to your `claude_desktop_config.json`:
+## Common JSON Configuration
+Add the following JSON configuration to the file corresponding to your tool:
+
 ### UV
 ```json
 {
@@ -40,48 +41,16 @@ To use this with Claude Desktop, add the following to your `claude_desktop_confi
 }
 ```
 
-# Use with Cursor
-To use this with Cursor, add the following to your `.cursor/mcp.json`:
-### UV
-```json
-{
-  "mcpServers": {
-    "Fintual MCP Server": {
-      "command": "/path_to_your_uv/.local/bin/uv",
-      "args": [
-        "run",
-        "--with",
-        "mcp[cli]",
-        "mcp",
-        "run",
-        "<path to mcp-servers>/fintual_mcp_server/python_server/main.py"
-      ]
-    }
-  }
-}
-```
+## Important:
+- Replace /path_to_your_uv/.local/bin/uv with the actual path to your uv executable.
+- Replace <path to mcp-servers>/fintual_mcp_server/python_server/main.py with the actual path to the main.py file of the Fintual MCP server.
 
-# Use with CodeGPT
-To use this with Cursor, add the following to your `~/.codegpt/mcp_config.json`:
-### UV
-```json
-{
-  "mcpServers": {
-    "Fintual MCP Server": {
-      "command": "/path_to_your_uv/.local/bin/uv",
-      "args": [
-        "run",
-        "--with",
-        "mcp[cli]",
-        "mcp",
-        "run",
-        "<path to mcp-servers>/fintual_mcp_server/python_server/main.py"
-      ]
-    }
-  }
-}
-```
+## Configuration File Location by Tool
+The common JSON configuration should be placed in the following file, depending on the tool you are using:
 
+- Claude Desktop: claude_desktop_config.json
+- Cursor: .cursor/mcp.json
+- CodeGPT: ~/.codegpt/mcp_config.json
 
 # Tool list
 - **asset_provider**: Get the list of asset providers.
