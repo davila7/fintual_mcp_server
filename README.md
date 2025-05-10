@@ -49,5 +49,8 @@ To use this with Claude Desktop, add the following to your claude_desktop_config
 ## Example questions to use the tools
 `Zurich es una administradora de activos de Fintual ?`
 
+<img width="360" alt="Screenshot 2025-05-09 at 23 35 53" src="https://github.com/user-attachments/assets/0e5c1ef0-3c1e-4faf-ad0c-700161f108d1" />
+
+
 - The model will use the tools to answer the questions, but first it will ask for confirmation to use the tools.
 - Then the model will read the API response and answer the question.
