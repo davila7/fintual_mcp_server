@@ -49,6 +49,7 @@ To use this with Claude Desktop, add the following to your claude_desktop_config
 
 # Prompt list
 - **assets_provider_prompt**: Prompt to use the assets_provider tool.
+- **conceptual_assets_prompt**: Prompt to use the conceptual_assets tool.
 
 ## Example questions to use the tools
 1. Question Example:
