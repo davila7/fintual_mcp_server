@@ -20,7 +20,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
 ## Use with Claude Desktop
-To use this with Claude Desktop, add the following to your claude_desktop_config.json:
+To use this with Claude Desktop, add the following to your `claude_desktop_config.json`:
 ### UV
 ```json
 {
@@ -39,6 +39,49 @@ To use this with Claude Desktop, add the following to your claude_desktop_config
   }
 }
 ```
+
+# Use with Cursor
+To use this with Cursor, add the following to your `.cursor/mcp.json`:
+### UV
+```json
+{
+  "mcpServers": {
+    "Fintual MCP Server": {
+      "command": "/path_to_your_uv/.local/bin/uv",
+      "args": [
+        "run",
+        "--with",
+        "mcp[cli]",
+        "mcp",
+        "run",
+        "<path to mcp-servers>/fintual_mcp_server/python_server/main.py"
+      ]
+    }
+  }
+}
+```
+
+# Use with CodeGPT
+To use this with Cursor, add the following to your `~/.codegpt/mcp_config.json`:
+### UV
+```json
+{
+  "mcpServers": {
+    "Fintual MCP Server": {
+      "command": "/path_to_your_uv/.local/bin/uv",
+      "args": [
+        "run",
+        "--with",
+        "mcp[cli]",
+        "mcp",
+        "run",
+        "<path to mcp-servers>/fintual_mcp_server/python_server/main.py"
+      ]
+    }
+  }
+}
+```
+
 
 # Tool list
 - **asset_provider**: Get the list of asset providers.
