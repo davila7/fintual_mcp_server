@@ -1,5 +1,5 @@
 # Fintual MCP Servers
-A Model Context Protocol server that provides read-only access to Fintual's API. This server enables LLMs to interact with Fintual's API.
+This server enables LLMs to interact with Fintual's API.
 
 # API Endpoints
 Swagger: https://fintual.cl/api-docs/index.html
