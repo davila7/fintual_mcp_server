@@ -42,8 +42,8 @@ Add the following JSON configuration to the file corresponding to your tool:
 ```
 
 ## Important:
-- Replace /path_to_your_uv/.local/bin/uv with the actual path to your uv executable.
-- Replace <path to mcp-servers>/fintual_mcp_server/python_server/main.py with the actual path to the main.py file of the Fintual MCP server.
+- Replace `/path_to_your_uv/.local/bin/uv` with the actual path to your uv executable.
+- Replace `<path to mcp-servers>/fintual_mcp_server/python_server/main.py` with the actual path to the main.py file of the Fintual MCP server.
 
 ## Configuration File Location by Tool
 The common JSON configuration should be placed in the following file, depending on the tool you are using:
