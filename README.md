@@ -14,8 +14,7 @@ Swagger: https://fintual.cl/api-docs/index.html
 git clone https://github.com/davila7/fintual_mcp_server.git
 ```
 
-2- Install dependencies
-Install uv
+2- Install [uv](https://github.com/astral-sh/uv)
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
