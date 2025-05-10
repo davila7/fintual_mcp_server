@@ -13,11 +13,10 @@ Swagger: https://fintual.cl/api-docs/index.html
 # Tool list
 
 ## Example questions to use the tools
-- Use the tool about_me and explain who is Daniel 
+`Zurich es una administradora de activos de Fintual ?`
 
-The model will use the tools to answer the questions, but first it will ask for confirmation to use the tools.
-
-Then the model will read the API response and answer the question.
+- The model will use the tools to answer the questions, but first it will ask for confirmation to use the tools.
+- Then the model will read the API response and answer the question.
 
 # UV Python MCP Server
 ```json
