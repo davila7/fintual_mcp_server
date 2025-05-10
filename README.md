@@ -7,7 +7,7 @@ Swagger: https://fintual.cl/api-docs/index.html
 
 
 # Servers list
-- [Python Server](https://github.com/davila7/fintual_mcp_server/tree/main/python_dani_mcp)
+- [Python Server](https://github.com/davila7/fintual_mcp_server/tree/main/python_server)
 - [Typescript Server]() (coming soon)
 
 # Tool list
@@ -17,6 +17,22 @@ Swagger: https://fintual.cl/api-docs/index.html
 
 The model will use the tools to answer the questions, but first it will ask for confirmation to use the tools.
 
-
 Then the model will read the API response and answer the question.
 
+# UV Python MCP Server
+```json
+{
+  "mcpServers": {
+    "Fintual MCP": {
+      "command": "/path_to_your_uv/.local/bin/uv",
+      "args": [
+        "run",
+        "--with",
+        "mcp[cli]",
+        "mcp",
+        "run",
+        "/path/to/projects/fintual_mcp_server/python_server/main.py"
+      ]
+    }
+  }
+}
