@@ -26,7 +26,7 @@ To use this with Claude Desktop, add the following to your claude_desktop_config
 ```json
 {
   "mcpServers": {
-    "Fintual MCP": {
+    "Fintual MCP Server": {
       "command": "/path_to_your_uv/.local/bin/uv",
       "args": [
         "run",
