@@ -34,7 +34,7 @@ Add the following JSON configuration to the file corresponding to your tool:
         "mcp[cli]",
         "mcp",
         "run",
-        "<path to mcp-servers>/fintual_mcp_server/fintual_python_server/main.py"
+        "<path to mcp-servers>/fintual_mcp_server/fintual_python_server/server.py"
       ]
     }
   }
