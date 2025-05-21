@@ -30,7 +30,7 @@ class FintualMCPServer:
         self.mcp.run(transport=transport)
 
 # Create a server instance at the module level
-server = FintualMCPServer()
+server = FintualMCPServer().mcp
 
 # Main entry point
 if __name__ == "__main__":

@@ -3,7 +3,6 @@ import json
 from typing import Dict, Any, List
 from mcp.types import TextContent
 import urllib.request
-import urllib.parse
 
 class FintualMCPTools:
     """A class containing tools for the Fintual agent."""
