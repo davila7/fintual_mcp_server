@@ -9,6 +9,13 @@ class FintualMCPTools:
 
     def __init__(self):
         self._base_url = "https://fintual.cl/api/"
+        # Fintual funds 
+        self._fund_ids = {
+            "very_conservative_streep": 15077,
+            "conservative_clooney": 188,
+            "moderate_pit": 187,
+            "risky_norris": 186
+        }
 
     def _fetch_fintual_data(self, endpoint: str) -> Dict[str, Any]:
         """Helper function to fetch data from a given Fintual API endpoint."""
@@ -67,22 +74,200 @@ class FintualMCPTools:
             ]
         }
     
+    def login(self, email: str, password: str) -> Dict[str, List[TextContent]]:
+        """
+        Authenticates a user with Fintual API and returns an access token
+        
+        Args:
+            email: User's email address
+            password: User's password
+        
+        Returns:
+            Response containing the access token if successful
+        """
+        data = {
+            "user": {
+                "email": email,
+                "password": password
+            }
+        }
+        
+        try:
+            response = self._post_api_data("access_tokens", data)
+            return self._format_response(response)
+        except Exception as e:
+            return {
+                "content": [
+                    {
+                        "type": "text",
+                        "text": f"Authentication failed: {str(e)}"
+                    }
+                ]
+            }
+
+    
     def asset_providers(self) -> Dict[str, List[TextContent]]:
         """Gets the list of asset providers from the API"""
-        data = self._fetch_api_data("asset_providers")
+        data = self._fetch_fintual_data("asset_providers")
         return self._format_response(data)
     
     def get_asset_provider_by_id(self, asset_provider_id: int) -> Dict[str, List[TextContent]]:
         """Gets the asset provider by ID from the API"""
-        data = self._fetch_api_data(f"asset_providers/{asset_provider_id}")
+        data = self._fetch_fintual_data(f"asset_providers/{asset_provider_id}")
         return self._format_response(data)
     
     def get_conceptual_asset_by_asset_provider_id(self, asset_provider_id: int) -> Dict[str, List[TextContent]]:
         """Gets the conceptual asset by asset provider ID from the API"""
-        data = self._fetch_api_data(f"asset_providers/{asset_provider_id}/conceptual_assets")
+        data = self._fetch_fintual_data(f"asset_providers/{asset_provider_id}/conceptual_assets")
         return self._format_response(data)
     
     def banks(self) -> Dict[str, List[TextContent]]:
         """Gets the list of banks from the API"""
-        data = self._fetch_api_data("banks")
+        data = self._fetch_fintual_data("banks")
         return self._format_response(data)
+    
+    def get_very_conservative_streep(self, to_date: str = None, from_date: str = None) -> Dict[str, List[TextContent]]:
+        """
+        Obtiene el valor cuota del fondo Very Conservative Streep (ID: 15077)
+        
+        Args:
+            to_date: Fecha hasta la cual obtener datos (formato YYYY-MM-DD)
+            from_date: Fecha desde la cual obtener datos (formato YYYY-MM-DD)
+        """
+        params = []
+        if to_date:
+            params.append(f"to_date={to_date}")
+        if from_date:
+            params.append(f"from_date={from_date}")
+        
+        endpoint = f"real_assets/15077/days"
+        if params:
+            endpoint += f"?{'&'.join(params)}"
+            
+        data = self._fetch_fintual_data(endpoint)
+        return self._format_response(data)
+    
+    def get_conservative_clooney(self, to_date: str = None, from_date: str = None) -> Dict[str, List[TextContent]]:
+        """
+        Obtiene el valor cuota del fondo Conservative Clooney (ID: 188)
+        
+        Args:
+            to_date: Fecha hasta la cual obtener datos (formato YYYY-MM-DD)
+            from_date: Fecha desde la cual obtener datos (formato YYYY-MM-DD)
+        """
+        params = []
+        if to_date:
+            params.append(f"to_date={to_date}")
+        if from_date:
+            params.append(f"from_date={from_date}")
+        
+        endpoint = f"real_assets/188/days"
+        if params:
+            endpoint += f"?{'&'.join(params)}"
+            
+        data = self._fetch_fintual_data(endpoint)
+        return self._format_response(data)
+    
+    def get_moderate_pit(self, to_date: str = None, from_date: str = None) -> Dict[str, List[TextContent]]:
+        """
+        Obtiene el valor cuota del fondo Moderate Pit (ID: 187)
+        
+        Args:
+            to_date: Fecha hasta la cual obtener datos (formato YYYY-MM-DD)
+            from_date: Fecha desde la cual obtener datos (formato YYYY-MM-DD)
+        """
+        params = []
+        if to_date:
+            params.append(f"to_date={to_date}")
+        if from_date:
+            params.append(f"from_date={from_date}")
+        
+        endpoint = f"real_assets/187/days"
+        if params:
+            endpoint += f"?{'&'.join(params)}"
+            
+        data = self._fetch_fintual_data(endpoint)
+        return self._format_response(data)
+    
+    def get_risky_norris(self, to_date: str = None, from_date: str = None) -> Dict[str, List[TextContent]]:
+        """
+        Obtiene el valor cuota del fondo Risky Norris (ID: 186)
+        
+        Args:
+            to_date: Fecha hasta la cual obtener datos (formato YYYY-MM-DD)
+            from_date: Fecha desde la cual obtener datos (formato YYYY-MM-DD)
+        """
+        params = []
+        if to_date:
+            params.append(f"to_date={to_date}")
+        if from_date:
+            params.append(f"from_date={from_date}")
+        
+        endpoint = f"real_assets/186/days"
+        if params:
+            endpoint += f"?{'&'.join(params)}"
+            
+        data = self._fetch_fintual_data(endpoint)
+        return self._format_response(data)
+    
+    def get_fund_data(self, fund_id: int, to_date: str = None, from_date: str = None) -> Dict[str, List[TextContent]]:
+        """
+        Obtiene el valor cuota de cualquier fondo por su ID
+        
+        Args:
+            fund_id: ID del fondo
+            to_date: Fecha hasta la cual obtener datos (formato YYYY-MM-DD)
+            from_date: Fecha desde la cual obtener datos (formato YYYY-MM-DD)
+        """
+        params = []
+        if to_date:
+            params.append(f"to_date={to_date}")
+        if from_date:
+            params.append(f"from_date={from_date}")
+        
+        endpoint = f"real_assets/{fund_id}/days"
+        if params:
+            endpoint += f"?{'&'.join(params)}"
+            
+        data = self._fetch_fintual_data(endpoint)
+        return self._format_response(data)
+    
+    def get_very_conservative_streep(self, to_date: str = None, from_date: str = None) -> Dict[str, List[TextContent]]:
+        """
+        Obtiene el valor cuota del fondo Very Conservative Streep
+        
+        Args:
+            to_date: Fecha hasta la cual obtener datos (formato YYYY-MM-DD)
+            from_date: Fecha desde la cual obtener datos (formato YYYY-MM-DD)
+        """
+        return self.get_fund_data(self._fund_ids["very_conservative_streep"], to_date, from_date)
+    
+    def get_conservative_clooney(self, to_date: str = None, from_date: str = None) -> Dict[str, List[TextContent]]:
+        """
+        Obtiene el valor cuota del fondo Conservative Clooney
+        
+        Args:
+            to_date: Fecha hasta la cual obtener datos (formato YYYY-MM-DD)
+            from_date: Fecha desde la cual obtener datos (formato YYYY-MM-DD)
+        """
+        return self.get_fund_data(self._fund_ids["conservative_clooney"], to_date, from_date)
+    
+    def get_moderate_pit(self, to_date: str = None, from_date: str = None) -> Dict[str, List[TextContent]]:
+        """
+        Obtiene el valor cuota del fondo Moderate Pit
+        
+        Args:
+            to_date: Fecha hasta la cual obtener datos (formato YYYY-MM-DD)
+            from_date: Fecha desde la cual obtener datos (formato YYYY-MM-DD)
+        """
+        return self.get_fund_data(self._fund_ids["moderate_pit"], to_date, from_date)
+    
+    def get_risky_norris(self, to_date: str = None, from_date: str = None) -> Dict[str, List[TextContent]]:
+        """
+        Obtiene el valor cuota del fondo Risky Norris
+        
+        Args:
+            to_date: Fecha hasta la cual obtener datos (formato YYYY-MM-DD)
+            from_date: Fecha desde la cual obtener datos (formato YYYY-MM-DD)
+        """
+        return self.get_fund_data(self._fund_ids["risky_norris"], to_date, from_date)
