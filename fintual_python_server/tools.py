@@ -28,7 +28,15 @@ class FintualMCPTools:
         try:
             response = urllib.request.urlopen(request)
             if response.getcode() == 200:
-                response_text = json.dumps(json.loads(response.read()), indent=4)
+                # Leer la respuesta como texto y deserializarla
+                response_text = response.read().decode('utf-8')
+                response_json = json.loads(response_text)
+                return {
+                    "content": [{
+                        "type": "text",
+                        "text": response_json
+                    }]
+                }
             else:
                 response_text = f"Error: Unable to fetch data, HTTP Code: {response.getcode()}"
         except urllib.error.HTTPError as e:
@@ -213,7 +221,7 @@ class FintualMCPTools:
     def get_fund_data(self, fund_id: int, to_date: str = None, from_date: str = None) -> Dict[str, List[TextContent]]:
         """
         Obtiene el valor cuota de cualquier fondo por su ID
-        
+
         Args:
             fund_id: ID del fondo
             to_date: Fecha hasta la cual obtener datos (formato YYYY-MM-DD)
@@ -224,14 +232,42 @@ class FintualMCPTools:
             params.append(f"to_date={to_date}")
         if from_date:
             params.append(f"from_date={from_date}")
-        
+
         endpoint = f"real_assets/{fund_id}/days"
         if params:
             endpoint += f"?{'&'.join(params)}"
-            
-        data = self._fetch_fintual_data(endpoint)
-        return self._format_response(data)
-    
+
+        raw_data = self._fetch_fintual_data(endpoint)
+        # The data is already parsed into a dictionary by _fetch_fintual_data
+        # Access the dictionary directly from the 'text' field
+        try:
+            data_json = raw_data["content"][0]["text"]
+            # Extract only the date and price
+            days = [
+                {
+                    "date": d["attributes"]["date"],
+                    "price": d["attributes"]["price"]
+                }
+                for d in data_json.get("data", [])
+            ]
+            return {
+                "content": [
+                    TextContent(
+                        type="text",
+                        text=json.dumps(days, indent=4)
+                    )
+                ]
+            }
+        except Exception as e:
+            return {
+                "content": [
+                    TextContent(
+                        type="text",
+                        text=f"Error al procesar los datos: {str(e)}"
+                    )
+                ]
+            }
+
     def get_very_conservative_streep(self, to_date: str = None, from_date: str = None) -> Dict[str, List[TextContent]]:
         """
         Obtiene el valor cuota del fondo Very Conservative Streep

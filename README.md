@@ -19,8 +19,14 @@ git clone https://github.com/davila7/fintual_mcp_server.git
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-## Common JSON Configuration
-Add the following JSON configuration to the file corresponding to your tool:
+# Add the server
+Go to the python_dani_mcp folder and run the following command:
+
+cd python_dani_mcp
+To install the Python server, run the following command:
+
+uv run mcp install server.py
+or Add this to your .codegpt/mcp_config.json for CodeGPT or /path/to/Claude/claude_desktop_config.json for Claude Desktop:
 
 ### UV
 ```json
