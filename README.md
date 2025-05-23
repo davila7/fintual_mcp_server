@@ -20,15 +20,18 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
 # Add the server
-Go to the python_dani_mcp folder and run the following command:
+Go to the fintual_python_server folder and run the following command:
+```bash
+cd fintual_python_server
+```
 
-cd python_dani_mcp
-To install the Python server, run the following command:
-
+Run the following command:
+```bash
 uv run mcp install server.py
+```
+
 or Add this to your .codegpt/mcp_config.json for CodeGPT or /path/to/Claude/claude_desktop_config.json for Claude Desktop:
 
-### UV
 ```json
 {
   "mcpServers": {
